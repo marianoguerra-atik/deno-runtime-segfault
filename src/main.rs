@@ -77,8 +77,13 @@ impl Handler {
     }
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), AnyError> {
+    // let platform = deno_runtime::deno_core::v8::new_default_platform(0, false).make_shared();
+    // deno_runtime::deno_core::v8::V8::initialize_platform(platform);
+    // deno_runtime::deno_core::v8::V8::initialize();
+    // deno_runtime::deno_core::JsRuntime::init_platform(Some(platform));
+
     let mut handlers = Handlers::new();
     let handler1_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("handler1.js");
 
